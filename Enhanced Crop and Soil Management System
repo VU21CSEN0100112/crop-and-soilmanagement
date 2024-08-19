@@ -1,0 +1,47 @@
+def get_crop_recommendations(soil_type):
+    # Dummy data for soil and crop recommendations
+    crops = {
+        "loamy": {
+            "Wheat": "Wheat grows well in loamy soil due to its balanced moisture retention and drainage.",
+            "Corn": "Corn thrives in loamy soil as it allows for deep root penetration and good nutrient availability.",
+            "Barley": "Barley is suitable for loamy soil because it benefits from its structure and fertility."
+        },
+        "clay": {
+            "Rice": "Rice is ideal for clay soil due to its ability to tolerate waterlogged conditions.",
+            "Soybeans": "Soybeans grow well in clay soil as it provides sufficient nutrients and moisture retention.",
+            "Potatoes": "Potatoes can be grown in clay soil with proper management to avoid waterlogging."
+        },
+        "sandy": {
+            "Peanuts": "Peanuts prefer sandy soil for its excellent drainage and warm temperature conditions.",
+            "Watermelons": "Watermelons grow best in sandy soil due to its light texture and good drainage.",
+            "Carrots": "Carrots thrive in sandy soil as it allows for deep root growth and easy harvesting."
+        }
+    }
+
+    # Get recommendations based on soil type
+    return crops.get(soil_type.lower(), {"Error": "No recommendations available for this soil type"})
+
+def main():
+    print("=======================================")
+    print(" Welcome to the Crop and Soil Management System!")
+    print("=======================================")
+
+    # Get user input for soil type
+    soil_type = input("Enter your soil type (loamy, clay, sandy): ").strip()
+
+    # Get crop recommendations
+    recommendations = get_crop_recommendations(soil_type)
+
+    # Display recommendations
+    if "Error" in recommendations:
+        print("\n" + recommendations["Error"])
+    else:
+        print(f"\nRecommended crops for soil type '{soil_type.capitalize()}':")
+        print("=======================================")
+        for crop, description in recommendations.items():
+            print(f"\n- {crop.capitalize()}:")
+            print(f"  {description}")
+        print("=======================================")
+
+if __name__ == "__main__":
+    main()
